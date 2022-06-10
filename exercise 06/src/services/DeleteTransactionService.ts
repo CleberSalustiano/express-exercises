@@ -1,8 +1,19 @@
+import { getRepository } from "typeorm";
+import TransactionsRepository from "../repositories/TransactionsRepository";
+
 // import AppError from '../errors/AppError';
 
 class DeleteTransactionService {
-  public async execute(): Promise<void> {
-    // TODO
+  public async execute(id : string): Promise<void> {
+    const transactionsRepository = getRepository(TransactionsRepository);
+
+    const testeId = transactionsRepository.findOne(id);
+
+    if (!testeId){
+      throw Error("Impossible delete some transaction does not exist")
+    }
+
+    transactionsRepository.delete(id);
   }
 }
 

@@ -1,11 +1,11 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export default class CreateTransaction1654732521616 implements MigrationInterface {
+export default class CreateCategory1654815334058 implements MigrationInterface {
 
-    public async up(queryRunner: QueryRunner): Promise<void>{
+    public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table ({
-                name: "transaction",
+                name: "category",
                 columns: [
                     {
                         name: "id",
@@ -16,22 +16,7 @@ export default class CreateTransaction1654732521616 implements MigrationInterfac
                     {
                         name: "title",
                         type: "varchar",
-                        isNullable: true
-                    },
-                    {
-                        name: "type",
-                        type: "varchar",
-                        isNullable: false,   
-                    },
-                    {
-                        name: "value",
-                        type: "int",
-                        isNullable: false,   
-                    },
-                    {
-                        name: "category_id",
-                        type: "varchar",
-                        isNullable: false,
+                        isNullable: true,
                     },
                     {
                         name: 'created_at',
@@ -39,17 +24,18 @@ export default class CreateTransaction1654732521616 implements MigrationInterfac
                         default: 'now()',
                       },
                       {
-                        name: 'updated_at',
+                        name: 'update_at',
                         type: 'timestamp',
                         default: 'now()',
                       },
                 ]
             })
-        )
+        );
+
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("transaction")
+        await queryRunner.dropTable("category")
     }
 
 }
