@@ -11,7 +11,8 @@ export default class CreateCategory1654815334058 implements MigrationInterface {
                         name: "id",
                         type: "varchar",
                         isPrimary: true,
-                        generationStrategy: "uuid"
+                        generationStrategy: "uuid",
+                        default: "uuid_generate_v4()"
                     },
                     {
                         name: "title",
@@ -24,7 +25,7 @@ export default class CreateCategory1654815334058 implements MigrationInterface {
                         default: 'now()',
                       },
                       {
-                        name: 'update_at',
+                        name: 'updated_at',
                         type: 'timestamp',
                         default: 'now()',
                       },
