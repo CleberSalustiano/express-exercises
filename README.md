@@ -10,4 +10,8 @@ Some challenges based on this [list]. The idea is to practice some knowledge rec
 [Challenge 06](./challenge06)
 
 
+[Challenge 07](./challenge07/)
+
+
+
 [list]: https://github.com/rocketseat-education/bootcamp-gostack-desafios/blob/master/README.en.md

@@ -18,16 +18,16 @@ The database connection was made using TypeORM and the database was created usin
 
 ## Challenges
 
-- [x] should be able to create a new transaction
+- [x] - should be able to create a new transaction
 
-- [x] should create tags when insertin new transactions
+- [x] - should create tags when insertin new transactions
 
-- [x] should create tags when they already exists
+- [x] - should create tags when they already exists
 
-- [x] should be able to list the transactions
+- [x] - should be able to list the transactions
 
-- [x] should not be able to create outcome transaction without a valid balance
+- [x] - should not be able to create outcome transaction without a valid balance
 
-- [x] should be able to delete a transaction
+- [x] - should be able to delete a transaction
 
-- [x] should be able to import transactions
+- [x] - should be able to import transactions

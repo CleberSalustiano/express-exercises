@@ -1,5 +1,6 @@
+/* eslint-disable react/jsx-no-bind */
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import filesize from 'filesize';
 
@@ -20,7 +21,7 @@ interface FileProps {
 
 const Import: React.FC = () => {
   const [uploadedFiles, setUploadedFiles] = useState<FileProps[]>([]);
-  const history = useHistory();
+  const history = useNavigate();
 
   async function handleUpload(): Promise<void> {
     // const data = new FormData();
