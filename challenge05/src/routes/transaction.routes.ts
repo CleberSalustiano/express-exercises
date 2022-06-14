@@ -13,7 +13,9 @@ transactionRouter.get('/', (request, response) => {
 
     response.json(data);
   } catch (err) {
-    return response.status(400).json({ error: err.message });
+    if (err instanceof Error) {
+      return response.status(400).json({ error: err.message });
+    }
   }
 });
 
@@ -23,15 +25,16 @@ transactionRouter.post('/', (request, response) => {
     const createTransaction = new CreateTransactionService(
       transactionsRepository,
     );
-    const {total} = transactionsRepository.getBalance();
+    const { total } = transactionsRepository.getBalance();
 
     if (type !== 'income' && type !== 'outcome') {
       throw Error('This transaction is not correct.');
     }
 
-
-    if (type === 'outcome' && total < value){
-      throw Error('This transaction is not valid because the value is higher than available')
+    if (type === 'outcome' && total < value) {
+      throw Error(
+        'This transaction is not valid because the value is higher than available',
+      );
     }
 
     const transaction = createTransaction.execute({
@@ -44,7 +47,9 @@ transactionRouter.post('/', (request, response) => {
     response.json(transaction);
     return response.json(transaction);
   } catch (err) {
-    return response.status(400).json({ error: err.message });
+    if (err instanceof Error) {
+      return response.status(400).json({ error: err.message });
+    }
   }
 });
 
