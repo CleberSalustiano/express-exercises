@@ -41,6 +41,9 @@ class ImportTransactionsService {
       });
       transactions.push(transaction);
     }
+
+    fs.unlink(csvLocalization, () => {})
+    
     return transactions;
   }
 
