@@ -1,10 +1,8 @@
 import Transaction from '../models/Transaction';
 import csvParse from 'csv-parse';
 import fs from 'fs';
-import path from 'path';
 import CreateTransactionService from './CreateTransactionService';
-import Category from '../models/Category';
-import { getRepository } from 'typeorm';
+
 
 
 class ImportTransactionsService {

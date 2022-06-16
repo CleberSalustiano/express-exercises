@@ -4,19 +4,30 @@ import multer from 'multer';
 import TransactionsRepository from '../repositories/TransactionsRepository';
 import CreateTransactionService from '../services/CreateTransactionService';
 import DeleteTransactionService from '../services/DeleteTransactionService';
-import { getCustomRepository } from 'typeorm';
+import { getCustomRepository, getRepository } from 'typeorm';
 import ImportTransactionsService from '../services/ImportTransactionsService';
-import path from 'path';
 
 const transactionsRouter = Router();
 import uploadConfig from '../config/upload';
+import Category from '../models/Category';
+import Transaction from "../models/Transaction"
 
 const upload = multer(uploadConfig);
 
 transactionsRouter.get('/', async (request, response) => {
   const transactionsRepository = getCustomRepository(TransactionsRepository);
+  const categoryRepository = getRepository(Category);
 
-  const transactions = await transactionsRepository.find();
+  const typeTransaction = await transactionsRepository.find();
+  let transactions = new Array<Transaction>;
+  for (let transaction  of typeTransaction){
+    const category = await categoryRepository.findOne({where: {id: transaction.category_id}})
+    if (category instanceof Category) {
+      transaction.category = category
+    }
+    transactions.push(transaction)
+  }
+
   const balance = await transactionsRepository.getBalance();
 
   return response.json({ transactions, balance });
