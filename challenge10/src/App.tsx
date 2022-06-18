@@ -6,12 +6,10 @@ import Routes from './routes';
 import GlobalStyle from './styles/global';
 
 const App: React.FC = () => (
-  <>
+  <Router>
+    <Routes />
     <GlobalStyle />
-    <Router>
-      <Routes />
-    </Router>
-  </>
+  </Router>
 );
 
 export default App;
