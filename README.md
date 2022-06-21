@@ -13,7 +13,7 @@ Some challenges based on this [list]. The idea is to practice some knowledge rec
 [Challenge 07](./challenge07/)
 
 
-[challenge 10](./challenge10/)
+[Challenge 10](./challenge10/)
 
 
 
